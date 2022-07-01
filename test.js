@@ -7,7 +7,12 @@ const fastifyOpensearch = require('./index')
 
 test('with reachable cluster', async t => {
   const fastify = Fastify()
-  fastify.register(fastifyOpensearch, { node: 'http://localhost:9200' })
+  fastify.register(fastifyOpensearch, {
+    node: 'https://admin:admin@localhost:9200',
+    ssl: {
+      rejectUnauthorized: false
+    }
+  })
 
   await fastify.ready()
   t.strictEqual(fastify.opensearch.name, 'opensearch-js')
@@ -16,7 +21,7 @@ test('with reachable cluster', async t => {
 
 test('with unreachable cluster', async t => {
   const fastify = Fastify()
-  fastify.register(fastifyOpensearch, { node: 'http://localhost:9201' })
+  fastify.register(fastifyOpensearch, { node: 'https://admin:admin@localhost:9201' })
 
   try {
     await fastify.ready()
@@ -30,7 +35,7 @@ test('with unreachable cluster', async t => {
 test('with unreachable cluster and healthcheck disabled', async t => {
   const fastify = Fastify()
   fastify.register(fastifyOpensearch, {
-    node: 'http://localhost:9201',
+    node: 'https://admin:admin@localhost:9201',
     healthcheck: false
   })
 
@@ -46,7 +51,10 @@ test('with unreachable cluster and healthcheck disabled', async t => {
 test('namespaced', async t => {
   const fastify = Fastify()
   fastify.register(fastifyOpensearch, {
-    node: 'http://localhost:9200',
+    node: 'https://admin:admin@localhost:9200',
+    ssl: {
+      rejectUnauthorized: false
+    },
     namespace: 'cluster'
   })
 
@@ -58,12 +66,18 @@ test('namespaced', async t => {
 test('namespaced (errored)', async t => {
   const fastify = Fastify()
   fastify.register(fastifyOpensearch, {
-    node: 'http://localhost:9200',
+    node: 'https://admin:admin@localhost:9200',
+    ssl: {
+      rejectUnauthorized: false
+    },
     namespace: 'cluster'
   })
 
   fastify.register(fastifyOpensearch, {
-    node: 'http://localhost:9200',
+    node: 'https://admin:admin@localhost:9200',
+    ssl: {
+      rejectUnauthorized: false
+    },
     namespace: 'cluster'
   })
 
@@ -78,7 +92,10 @@ test('namespaced (errored)', async t => {
 
 test('custom client', async t => {
   const client = new Client({
-    node: 'http://localhost:9200',
+    node: 'https://admin:admin@localhost:9200',
+    ssl: {
+      rejectUnauthorized: false
+    },
     name: 'custom'
   })
 
