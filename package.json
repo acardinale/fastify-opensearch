@@ -1,0 +1,48 @@
+{
+  "name": "fastify-opensearch",
+  "version": "2.1.0",
+  "description": "Fastify plugin for AWS Opensearch",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard | snazzy",
+    "test": "npm run lint && npm run unit",
+    "unit": "tap test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acardinale/fastify-opensearch.git"
+  },
+  "keywords": [
+    "fastify",
+    "opensearch",
+    "AWS",
+    "OS",
+    "elastic",
+    "elasticsearch",
+    "elastic search",
+    "ES"
+  ],
+  "author": "Andrea Cardinale - @acardinale",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/acardinale/fastify-opensearch/issues"
+  },
+  "homepage": "https://github.com/acardinale/fastify-opensearch#readme",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "dependencies": {
+    "@opensearch-project/opensearch": "^2.0.0",
+    "fastify-plugin": "^3.0.0"
+  },
+  "devDependencies": {
+    "fastify": "^4.2.0",
+    "pre-commit": "^1.2.2",
+    "snazzy": "^9.0.0",
+    "standard": "^17.0.0",
+    "tap": "^16.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
