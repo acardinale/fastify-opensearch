@@ -33,14 +33,14 @@
   },
   "dependencies": {
     "@opensearch-project/opensearch": "^2.0.0",
-    "fastify-plugin": "^3.0.0"
+    "fastify-plugin": "^3.0.1"
   },
   "devDependencies": {
-    "fastify": "^3.0.0",
+    "fastify": "^4.2.0",
     "pre-commit": "^1.2.2",
     "snazzy": "^9.0.0",
     "standard": "^17.0.0",
-    "tap": "^16.0.0"
+    "tap": "^16.3.0"
   },
   "publishConfig": {
     "access": "public"

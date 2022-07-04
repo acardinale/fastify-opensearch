@@ -38,6 +38,6 @@ async function fastifyOpensearch (fastify, options) {
 }
 
 module.exports = fp(fastifyOpensearch, {
-  fastify: '3.x',
+  fastify: '3.x || 4.x',
   name: 'fastify-opensearch'
 })
